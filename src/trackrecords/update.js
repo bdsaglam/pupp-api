@@ -12,7 +12,7 @@ export async function main(event, context, callback) {
     },
     // 'UpdateExpression' defines the attributes to be updated
     // 'ExpressionAttributeValues' defines the value in the update expression
-    UpdateExpression: "SET answers = :answers",
+    UpdateExpression: "SET answers = :answers, updatedAt = :updatedAt",
     ExpressionAttributeValues: {
       ":answers": data.answers ? data.answers : {},
       ":updatedAt": Date.now(),
@@ -22,7 +22,7 @@ export async function main(event, context, callback) {
 
   try {
     const data = await dynamoDbLib.call("update", params);
-    callback(null, success({ status: true}));
+    callback(null, success({ status: true }));
   } catch (error) {
     callback(null, failure({ status: false, error: error }));
   }
