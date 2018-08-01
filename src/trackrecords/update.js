@@ -14,7 +14,8 @@ export async function main(event, context, callback) {
     // 'ExpressionAttributeValues' defines the value in the update expression
     UpdateExpression: "SET answers = :answers",
     ExpressionAttributeValues: {
-      ":answers": data.answers ? data.answers : {}
+      ":answers": data.answers ? data.answers : {},
+      ":updatedAt": Date.now(),
     },
     ReturnValues: "ALL_NEW"
   };

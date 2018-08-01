@@ -10,7 +10,8 @@ export async function main(event, context, callback) {
       userId: event.requestContext.identity.cognitoIdentityId,
       contentId: event.pathParameters.contentId,
       answers: data.answers,
-      createdAt: Date.now()
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     }
   };
 
